@@ -159,7 +159,8 @@ def construct_CU(U, circ, q, control=0, target=1, tol=1e-5, remove_id=True):
         circ.rz(b, q[target])
 
     if not remove_id or a != 0:
-        circ.u1(a, q[control])
+        a=a*np.pi
+        circ.u(0,0,a, q[control]) #changed gate u1 to p as u1 is deprecated
 
     return circ
 
